@@ -1,5 +1,3 @@
-# Multi-stage build setup (https://docs.docker.com/develop/develop-images/multistage-build/)
-
 # Stage 1 
 FROM maven:3.6-jdk-8-alpine AS builder
 RUN mvn -version
@@ -14,4 +12,4 @@ WORKDIR /root/
 COPY --from=builder /usr/src/myapp/target/eureka-service.jar .
 
 EXPOSE 8761
-ENTRYPOINT ["java", "-jar", "./mvn -versioneureka-service.jar"]
+ENTRYPOINT ["java", "-jar", "./eureka-service.jar"]
